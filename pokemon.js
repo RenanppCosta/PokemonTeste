@@ -11,7 +11,21 @@ function Pokemon(nome, pontosAtaque, pontosDefesa){
             //console.log(`${this.nome} foi derrotado pelo ${oponente.nome}!`)
         //}
     }
+    this.saudacao = (callback) =>{
+        console.log(`Olá. ${callback({...this})}`)
+    }
 }
+
+function saudacaoCompleta({nome, pontosAtaque, pontosDefesa}){
+      return `Meu nome é ${nome}! Tenho ${pontosAtaque} pontos de ataque e ${pontosDefesa} pontos de defesa.`
+}
+
+function saudacaoSimples({nome}){
+      return `Meu nome é ${nome}!`
+}
+
+
+
 
 let pineco = new Pokemon("Pineco", 1200, 500);
 let pikachu = new Pokemon("Pikachu", 2500, 1000);
@@ -23,6 +37,8 @@ let listaPokemons = JSON.parse(jsonPokemons);
 
 pineco.atacar(pikachu);
 
+pikachu.saudacao(saudacaoSimples);
+pineco.saudacao(saudacaoCompleta);
 
 console.log(pikachu);
 console.log(pineco);
